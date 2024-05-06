@@ -22,5 +22,16 @@ namespace MyFirstApplication.Controllers
 
         }
 
-    }
+
+        [HttpGet]
+        public ActionResult AddEmployee()
+        {
+
+            return View();
+        }
+
+
+
+
+        }
 }

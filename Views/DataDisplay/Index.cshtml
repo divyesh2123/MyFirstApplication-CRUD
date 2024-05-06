@@ -26,7 +26,8 @@
 
 
                         <div class="float-right">
-                            <a class="btn btn-success" onclick="showInPopup('@Url.Action("AddEditBatch","CityMaster")',false)"><i class="fa fa-plus"></i> Add New</a>
+                            <a class="btn btn-success"
+                               onclick="showInPopup('@Url.Action("AddEmployee","DataDisplay")',false)"><i class="fa fa-plus"></i> Add New</a>
 
                         </div>
 
@@ -107,7 +108,33 @@
         });
 
 
+        showInPopup = (url, edit) => {
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function (res) {
 
+
+
+
+                    $('#body').html(res);
+
+                    if (!edit) {
+                        $('#title').html('Add Employee');
+
+                    }
+                    else {
+                        $('#title').html('Edit Employee');
+                    }
+
+                    var myOffcanvas = document.getElementById('demo')
+                    var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas)
+                    bsOffcanvas.show()
+
+
+                }
+            })
+        }
       
 
     </script>

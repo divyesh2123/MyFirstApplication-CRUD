@@ -1,0 +1,39 @@
+﻿@model MyFirstApplication.Models.EmployeeDetails
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        @using (Html.BeginRouteForm(""))
+        {
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label for="batch">City</label>
+                @Html.TextBoxFor(y => y.City, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label for="batch">Description</label>
+                @Html.TextBoxFor(y => y.Address, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label for="batch">Name</label>
+                @Html.TextBoxFor(y => y.Name, new { @class = "form-control" })
+            </div>
+
+
+
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas">Cancel</button>
+
+            </div>
+        }
+
+    </div>
+
+</div>
