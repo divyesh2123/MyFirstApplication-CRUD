@@ -43,6 +43,7 @@
                                     <th>Description</th>
                                     <th>CityName</th>
                                     <th>Action</th>
+                                    <th>Action</th>
 
                                 </tr>
                             </thead>
@@ -98,6 +99,14 @@
                     { "data": "Address" },
                     { "data": "Name" },
                     { "data": "City" },
+                     {
+                         "data": "ID", "render": function (data) {
+                            return "<a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a>";
+                        },
+                        "orderable": false,
+                        "searchable": false,
+                        "width": "150px"
+                    }
 
                 ],
                 "language": {
@@ -135,7 +144,46 @@
                 }
             })
         }
-      
 
+          function Delete(id) {
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this record!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                showCancelButton: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+
+
+                        $.ajax({
+                            type: "POST",
+                            url: '@Url.Action("Delete", "DataDisplay")/' + id,
+                            success: function (data) {
+                                if (data.success) {
+                                    dataTable.ajax.reload();
+
+                                    swal(data.message, {
+                                        icon: "success",
+                                    });
+                                }
+
+                                else {
+
+                                    swal("Error");
+                                }
+                            }
+
+                        });
+
+
+
+                    }
+                });
+
+        }
     </script>
 }

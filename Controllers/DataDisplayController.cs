@@ -30,8 +30,23 @@ namespace MyFirstApplication.Controllers
             return View();
         }
 
+        [HttpPost]
+        public  ActionResult Delete(int id)
+        {
+            MyEmployeeDataEntities entities = new MyEmployeeDataEntities();
 
+            var d = entities.EMP_Example.FirstOrDefault(y => y.ID == id);
 
+            entities.EMP_Example.Remove(d);
+
+            entities.SaveChanges();
+
+            return Json(new { success = true, message = "deleted Successfully" });
 
         }
+
+
+
+
+    }
 }
