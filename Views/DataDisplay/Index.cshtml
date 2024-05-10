@@ -101,7 +101,7 @@
                     { "data": "City" },
                      {
                          "data": "ID", "render": function (data) {
-                            return "<a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a>";
+                            return "<a class='btn btn-primary btn-sm' onclick=showInPopup('@Url.Action("AddEmployee", "DataDisplay")/" + data + "',true)><i class='fa fa-pencil'></i> Edit</a  <a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete(" + data + ")><i class='fa fa-trash'></i> Delete</a>";
                         },
                         "orderable": false,
                         "searchable": false,
@@ -185,5 +185,45 @@
                 });
 
         }
+
+
+        jQueryAjaxPost = form => {
+            try {
+                $.ajax({
+                    type: 'POST',
+                    url: form.action,
+                    data: new FormData(form),
+                    contentType: false,
+                    processData: false,
+                    success: function (res) {
+                        if (res.success) {
+
+                            $('#body').html('');
+                            $('#title').html('');
+
+                            var myOffcanvas = document.getElementById('demo')
+                            let openedCanvas = bootstrap.Offcanvas.getInstance(myOffcanvas);
+                            openedCanvas.hide();
+
+                            dataTable.ajax.reload();
+                            swal(res.message, {
+                                icon: "success",
+                            });
+                        }
+                        else
+                            $('#form-modal .modal-body').html(res.html);
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+                })
+                //to prevent default form submit event
+                return false;
+            } catch (ex) {
+                console.log(ex)
+            }
+        }
+
+
     </script>
 }
