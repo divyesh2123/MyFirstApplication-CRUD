@@ -1,0 +1,13 @@
+﻿@model List<EMP_Example>
+
+<table></table>
+
+@foreach(var d in Model)
+            {
+
+<tr> <td>@d.Name</td> <td>@d.Address</td>
+    
+    <td>@d.ID</td>
+    </tr>
+
+            }

@@ -15,6 +15,12 @@ namespace MyFirstApplication.Controllers
             return View();
         }
 
+        [OutputCache(Duration = 1000)]
+        public ActionResult Index1()
+        {
+            return View();
+        }
+
         public JsonResult GetData()
         {
             MyEmployeeDataEntities entities = new MyEmployeeDataEntities();

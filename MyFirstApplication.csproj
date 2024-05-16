@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DataDisplayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentInfoController.cs" />
     <Compile Include="EMP_Example.cs">
       <DependentUpon>MyExample.tt</DependentUpon>
     </Compile>
@@ -445,6 +446,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\DataDisplay\Index.cshtml" />
     <Content Include="Views\DataDisplay\AddEmployee.cshtml" />
+    <Content Include="Views\DataDisplay\Index1.cshtml" />
+    <Content Include="Views\Shared\StudentInfo.cshtml" />
+    <Content Include="Views\StudentInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
